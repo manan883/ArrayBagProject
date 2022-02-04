@@ -1,9 +1,10 @@
 import java.util.*;
 public class bag {
 protected static ArrayList<String> arr;
-
-public bag(){
+protected static String bagName;
+public bag(String name){
 	arr = new ArrayList<String>();
+	bagName = name;
 }
 public static void addItem(String s) {
 	arr.add(s);
@@ -19,9 +20,11 @@ public static void removeFirstAppearanceOfItem(String s) {
 public static void removeXElement(int k) {
 	arr.remove(k);
 }
-public static String findXElement(int k) {
+public static String getXElement(int x) {
 	
-	return arr.get(k);
+	return arr.get(x);
 }
-
+public static String getName() {
+	return bagName;
+}
 }//end class
