@@ -22,6 +22,7 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		System.out.println("Type 'D' to delete a bag");
 		System.out.println("Type 'L' to list every bag name created");
 		System.out.println("Type 'U' to combine 2 bags");
+		System.out.println("Type 'I' to intersect 2 bags");
 		System.out.println("Type 'Q' to quit");
 		userInput = sc.nextLine();
 		
@@ -104,12 +105,21 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 			String n = sc.nextLine();
 			union(b1,b2,n);
 		}
-
+		if((userInput.equals("I")) || (userInput.equals("i"))) {
+			System.out.println("Enter the first bag: ");
+			String b1 = sc.nextLine();
+			System.out.println("Enter the second bag: ");
+			String b2 = sc.nextLine();
+			System.out.println("Enter the new bag name: ");
+			String n = sc.nextLine();
+			intersection(b1,b2,n);
+		}
 		
 		
 		}
 	}
 	public static boolean checkIfBagExists(String s) {
+		//error handling 
 		if(bags.get(s) == null) {
 			return false;
 		}
@@ -182,6 +192,15 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 			newBag(newBag);
 			
 			BagInterface.union(bags.get(bag1),bags.get(bag2),bags.get(newBag));
+		}
+	}
+	public static void intersection(String bag1, String bag2, String newBag) {
+		if((checkIfBagExists(bag1) == false) || (checkIfBagExists(bag2) == false)) {
+			System.out.println("ERROR: at least one bag does not exist!");
+		}
+		else {
+			newBag(newBag);
+			BagInterface.intersection(bags.get(bag1),bags.get(bag2),bags.get(newBag));
 		}
 	}
 
