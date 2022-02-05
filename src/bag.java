@@ -29,7 +29,7 @@ public boolean doesPosExist(int k) {
 	}
 }
 public void removeXElement(int k) {
-	arr.remove(k);
+	arr.remove(k-1);
 }
 public String getXElement(int x) {
 	return arr.get(x);

@@ -40,6 +40,7 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		if((userInput.equals("D")) || (userInput.equals("d"))) {
 			System.out.println("Enter the bag name you want to delete");
 			String g = sc.nextLine();
+			deleteBag(g);
 		}
 		if((userInput.equals("A")) || (userInput.equals("a"))) {
 			//Ask for which bag
@@ -48,9 +49,14 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 			String element;
 			System.out.println("Enter the bag name ");
 			bagN = sc.nextLine();
+			if(checkIfBagExists(bagN) == false) {
+				System.out.println("ERROR: bag does not exist!");
+			}
+			else {
 			System.out.println("Enter the element to add ");
 			element = sc.nextLine();
 			addElement(bagN,element);
+			}
 		}
 		if((userInput.equals("L")) || (userInput.equals("l"))) {
 			System.out.println("type the bag name you want to list: ");
@@ -124,8 +130,13 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 	}
 	public static void list(String s) {
 		//lists the items
+		if(checkIfBagExists(s) == false) {
+			System.out.println("ERROR: bag does not exist!");
+		}
+		else {
 		bag b = bags.get(s);
 		b.list();
+		}
 	}
 	public static void newBag(String str) {
 		bags.put(str, new bag(str));
