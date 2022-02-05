@@ -4,10 +4,6 @@ public class ResizeableArrayBag {
 public static ArrayList<String> bagNames;
 protected static Map<String, bag> bags = new HashMap<String, bag>();
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		BagInterface.union();
-//		BagInterface.intersection();
-//		BagInterface.difference();
 		userInterface();
 	}
 	public static void userInterface() {
@@ -23,14 +19,16 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		System.out.println("Type 'L' to list every bag name created");
 		System.out.println("Type 'U' to combine 2 bags");
 		System.out.println("Type 'I' to intersect 2 bags");
+		System.out.println("Type 'F' to get the difference between 2 bags");
 		System.out.println("Type 'Q' to quit");
+		System.out.println();
 		userInput = sc.nextLine();
 		
 		if((userInput.equals("M")) || (userInput.equals("m"))) {
 			//prompt user to make new bag
 			System.out.println("Enter the bag name you want");
 			String s = sc.nextLine();
-			if(bagNames.contains(s) == true) {
+			if(checkIfBagExists(s) == true) {
 				System.out.println("bag already exists ");
 				
 			}
@@ -114,6 +112,15 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 			String n = sc.nextLine();
 			intersection(b1,b2,n);
 		}
+		if((userInput.equals("F")) || (userInput.equals("f"))) {
+			System.out.println("Enter the first bag: ");
+			String b1 = sc.nextLine();
+			System.out.println("Enter the second bag: ");
+			String b2 = sc.nextLine();
+			System.out.println("Enter the new bag name: ");
+			String n = sc.nextLine();
+			difference(b1,b2,n);
+		}
 		
 		
 		}
@@ -160,7 +167,7 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 	}
 	public static void newBag(String str) {
 		bags.put(str, new bag(str));
-		bagNames.add(str);	
+		//bagNames.add(str);	
 		System.out.println("Bag created: " + str);
 	}
 	public static void deleteBag(String str) {
@@ -169,11 +176,6 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 			System.out.println("ERROR: bag does not exist!");
 		}
 		else {
-		for(int i = 0; i < bagNames.size(); i++) {
-			if(bagNames.get(i) == str) {
-				bagNames.remove(i);
-			}
-		}
 		bags.remove(str);
 		}
 	}
@@ -201,6 +203,15 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		else {
 			newBag(newBag);
 			BagInterface.intersection(bags.get(bag1),bags.get(bag2),bags.get(newBag));
+		}
+	}
+	public static void difference(String bag1, String bag2, String newBag) {
+		if((checkIfBagExists(bag1) == false) || (checkIfBagExists(bag2) == false)) {
+			System.out.println("ERROR: at least one bag does not exist!");
+		}
+		else {
+			newBag(newBag);
+			BagInterface.difference(bags.get(bag1),bags.get(bag2),bags.get(newBag));
 		}
 	}
 
