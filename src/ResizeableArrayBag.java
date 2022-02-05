@@ -53,40 +53,79 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 			addElement(bagN,element);
 		}
 		if((userInput.equals("L")) || (userInput.equals("l"))) {
-			//test
-			System.out.println("type bag name ");
+			System.out.println("type the bag name you want to list: ");
 			String s = sc.nextLine();
-			bag b = bags.get(s);
-			System.out.println(b.getXElement(0));
+			list(s);
 		}
 		if((userInput.equals("R")) || (userInput.equals("r"))) {
 			//Ask which bag
 			//then remove from that bag
+			System.out.println("Enter the bag name you wanna remove an item from: ");
+			String bagN = sc.nextLine();
+			//list the items in the bag
+			if(checkIfBagExists(bagN) == false) {
+				System.out.println("ERROR: bag does not exist!");
+			}
+			else {
+			list(bagN);			
+			System.out.println("Do you want to remove all instances of an item name, or remove one item? ");
+			System.out.println("Type 1 to remove all instances of an item name: ");
+			System.out.println("Type 2 to remove one item from the list: ");
+			String c = sc.nextLine();
+			if(c.equals("1")) {
+				System.out.println("Type the item name you want to remove from the bag: ");
+				String g = sc.nextLine();
+				bag b = bags.get(bagN);
+				b.removeAppearanceOfItem(g);
+			}
+			else if(c.equals("2")) {
+				System.out.println("Type the item postion you want to remove. Start counting at 1!: ");
+				String u = sc.nextLine();
+				removePostion(u,bagN);
+			}
+			else {
+				System.out.println("Invalid input!");
+			}
+			}
 		}
-		if(userInput.equals("1")) {
-//			bags.put("test", new bag("test"));
-//			bags.put("hem", new bag("hem"));
-//			System.out.println(bags);
-//			System.out.println("reference to test");
-//			bag b = bags.get("test");
-//			System.out.println(b + " B");
-//			b.addItem("gfdgfd");
-//			System.out.println(b.getXElement(0));
-//			bag d = bags.get("hem");
-//			System.out.println(d + " D");
-//			d.addItem("hfskdfhksd");
-//			System.out.println(d.getXElement(1));
-//			System.out.println(bags);
-			bag b = new bag("gfdg");
-			bag d = new bag("hi");
-//			b.addItem("fsdfds");
-//			d.addItem("hi");
-			System.out.println(b.getName());
-			System.out.println(d);
-		}
+
 		
 		
 		}
+	}
+	public static boolean checkIfBagExists(String s) {
+		if(bags.get(s) == null) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	public static void removePostion(String s, String name) {
+		//error handle the user input here
+		if(s.matches("-?\\d+(\\.\\d+)?") == false) {
+			System.out.println("Invalid Input!");
+		}
+		else {
+			if(checkIfBagExists(name) == false) {
+				System.out.println("ERROR: bag does not exist!");
+			}
+			else {
+				bag b = bags.get(name);
+				int g = Integer.parseInt(s);
+				if(b.doesPosExist(g) == false) {
+					System.out.println("The number given is invalid!");
+				}
+				else {
+					b.removeXElement(g);
+				}
+			}
+		}
+	}
+	public static void list(String s) {
+		//lists the items
+		bag b = bags.get(s);
+		b.list();
 	}
 	public static void newBag(String str) {
 		bags.put(str, new bag(str));
@@ -94,17 +133,24 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		System.out.println("Bag created: " + str);
 	}
 	public static void deleteBag(String str) {
-		//all this does is delete it from the list of names so its simpler for the user to use
+		//error handle and remove bag
+		if(checkIfBagExists(str) == false) {
+			System.out.println("ERROR: bag does not exist!");
+		}
+		else {
 		for(int i = 0; i < bagNames.size(); i++) {
 			if(bagNames.get(i) == str) {
 				bagNames.remove(i);
 			}
+		}
+		bags.remove(str);
 		}
 	}
 	public static void addElement(String str, String e) {
 		bag b = bags.get(str);
 		b.addItem(e);
 	}
+	
 	
 
 }
