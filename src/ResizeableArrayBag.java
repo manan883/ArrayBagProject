@@ -5,9 +5,9 @@ public static ArrayList<String> bagNames;
 protected static Map<String, bag> bags = new HashMap<String, bag>();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		BagInterface.union();
-		BagInterface.intersection();
-		BagInterface.difference();
+//		BagInterface.union();
+//		BagInterface.intersection();
+//		BagInterface.difference();
 		userInterface();
 	}
 	public static void userInterface() {
@@ -21,6 +21,7 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		System.out.println("Type 'R' to remove an element from a bag");
 		System.out.println("Type 'D' to delete a bag");
 		System.out.println("Type 'L' to list every bag name created");
+		System.out.println("Type 'U' to combine 2 bags");
 		System.out.println("Type 'Q' to quit");
 		userInput = sc.nextLine();
 		
@@ -94,6 +95,15 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 			}
 			}
 		}
+		if((userInput.equals("U")) || (userInput.equals("u"))) {
+			System.out.println("Enter the first bag: ");
+			String b1 = sc.nextLine();
+			System.out.println("Enter the second bag: ");
+			String b2 = sc.nextLine();
+			System.out.println("Enter the new bag name: ");
+			String n = sc.nextLine();
+			union(b1,b2,n);
+		}
 
 		
 		
@@ -157,11 +167,22 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		bags.remove(str);
 		}
 	}
-	public static void addElement(String str, String e) {
-		bag b = bags.get(str);
+	public static void addElement(String bagN, String e) {
+		bag b = bags.get(bagN);
 		b.addItem(e);
 	}
 	
-	
+//phase 2 UI, union etc
+	public static void union(String bag1, String bag2, String newBag) {
+		if((checkIfBagExists(bag1) == false) || (checkIfBagExists(bag2) == false)) {
+			System.out.println("ERROR: at least one bag does not exist!");
+		}
+		else {
+			//make new bag for the combined and call union in BagInterface class
+			newBag(newBag);
+			
+			BagInterface.union(bags.get(bag1),bags.get(bag2),bags.get(newBag));
+		}
+	}
 
 }

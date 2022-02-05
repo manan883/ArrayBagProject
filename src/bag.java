@@ -1,6 +1,6 @@
 import java.util.*;
 class bag {
-private ArrayList<String> arr;
+protected ArrayList<String> arr;
 private String bagName;
  bag(String name){
 	arr = new ArrayList<String>();
