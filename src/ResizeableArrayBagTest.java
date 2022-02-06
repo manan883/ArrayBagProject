@@ -18,12 +18,10 @@ class ResizeableArrayBagTest {
 		arr.add("lemons");
 		arr.add("limes");
 		arr.add("lmao");
-		arr.add("lmao");
-		arr.add("lmao");
 		arr.add("testing");
 		arr.add("item");
 		Random r = new Random();
-		for(int i = 0; i < 9; i++) {
+		for(int i = 0; i < 3; i++) {
 			
 			int m = r.nextInt(9);
 			ResizeableArrayBag.newBag("bag" + i);
