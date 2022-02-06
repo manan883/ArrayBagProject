@@ -1,8 +1,8 @@
 import java.util.*;
-class bag {
+public class bag {
 protected ArrayList<String> arr;
 private String bagName;
- bag(String name){
+ public bag(String name){
 	arr = new ArrayList<String>();
 	bagName = name;
 }

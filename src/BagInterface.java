@@ -1,7 +1,7 @@
 //client
 import java.util.*;
 public class BagInterface {
-
+public static int c = 0;
 	public static void union(bag bag1, bag bag2, bag newBag) {
 		for(int i = 0; i < bag1.arr.size(); i++) {
 			ResizeableArrayBag.addElement(newBag.getName(),bag1.getXElement(i));
@@ -56,7 +56,11 @@ public class BagInterface {
 	public static void difference(bag bag1, bag bag2, bag newBag) {
 		newBag.arr = new ArrayList<String>();
 		newBag.arr.addAll(bag1.arr);
-		newBag.arr.removeAll(bag2.arr);
+		//newBag.arr.removeAll(bag2.arr);
+		for(int i = 0; i < bag2.arr.size(); i++) {
+			c = i;
+			newBag.arr.removeIf(n -> (n == bag2.getXElement(c)));
+		}
 //		if(bag1.arr.size() > bag2.arr.size()) {
 //			//bag1 is outer loop
 //			for(int i = 0; i < bag1.arr.size(); i++) {
