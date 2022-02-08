@@ -3,10 +3,7 @@ import java.util.*;
 public class ResizeableArrayBag {
 public static ArrayList<String> bagNames;
 protected static Map<String, bag> bags = new HashMap<String, bag>();
-	public static void main(String[] args) {
-		userInterface();
-	}
-	public static void userInterface() {
+	public static void userInterfaceResize() {
 		bagNames = new ArrayList<String>();
 		Scanner sc = new Scanner(System.in);
 		String userInput = "";
@@ -167,7 +164,6 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 	}
 	public static void newBag(String str) {
 		bags.put(str, new bag(str));
-		//bagNames.add(str);	
 		System.out.println("Bag created: " + str);
 	}
 	public static void deleteBag(String str) {
