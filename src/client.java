@@ -10,9 +10,6 @@ public class client {
 private static JFrame main = new JFrame();
 private static JFrame linkedF = new JFrame();
 private static JFrame resizeF = new JFrame();
-private static JFrame input = new JFrame();
-private static JFrame error = new JFrame();
-private static String userText = "";
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//have user choose which type they want then call methods based on that 
@@ -87,6 +84,12 @@ private static String userText = "";
 		    	String name = JOptionPane.showInputDialog(linkedF,"Enter the bag name");
 		    	if(LinkedBag.checkIfBagExists(name) == true) {
 		    		JOptionPane.showMessageDialog(linkedF,"ERROR: Bag already exists");
+		    	}
+		    	else if(name == null) {
+		    		JOptionPane.showMessageDialog(linkedF,"Name can not be empty");
+		    	}
+		    	else if(name.equals("")) {
+		    		JOptionPane.showMessageDialog(linkedF, "Name can not be empty");
 		    	}
 		    	else {
 		    		LinkedBag.newBag(name);
@@ -164,12 +167,52 @@ private static String userText = "";
 		    public void actionPerformed(ActionEvent e){  
 		    String name1 = JOptionPane.showInputDialog(linkedF,"Enter the first bags name");
 		    String name2 = JOptionPane.showInputDialog(linkedF,"Enter the second bags name");
+		    String newb = JOptionPane.showInputDialog(linkedF,"Enter the new bags name");
 		    if((LinkedBag.checkIfBagExists(name1) == false) || (LinkedBag.checkIfBagExists(name2) == false)) {
 	    		JOptionPane.showMessageDialog(linkedF,"ERROR: At least 1 bag does not exist");
 	    	}
+		    else {
+		    	LinkedBag.union(name1,name2,newb);
+		    	bagLinked b = LinkedBag.lBags.get(newb);
+	    		StringBuilder sb = b.list();
+	    		JOptionPane.showMessageDialog(linkedF,sb);
+		    }
 		 }  
 }); //end event union
-		
+		//start intersect
+		intersect.addActionListener(new ActionListener(){  
+		    public void actionPerformed(ActionEvent e){  
+		    String name1 = JOptionPane.showInputDialog(linkedF,"Enter the first bags name");
+		    String name2 = JOptionPane.showInputDialog(linkedF,"Enter the second bags name");
+		    String newb = JOptionPane.showInputDialog(linkedF,"Enter the new bags name");
+		    if((LinkedBag.checkIfBagExists(name1) == false) || (LinkedBag.checkIfBagExists(name2) == false)) {
+	    		JOptionPane.showMessageDialog(linkedF,"ERROR: At least 1 bag does not exist");
+	    	}
+		    else {
+		    	LinkedBag.intersection(name1,name2,newb);
+		    	bagLinked b = LinkedBag.lBags.get(newb);
+	    		StringBuilder sb = b.list();
+	    		JOptionPane.showMessageDialog(linkedF,sb);
+		    }
+		 }  
+}); //end event intersect
+		//start difference
+		difference.addActionListener(new ActionListener(){  
+		    public void actionPerformed(ActionEvent e){  
+		    String name1 = JOptionPane.showInputDialog(linkedF,"Enter the first bags name");
+		    String name2 = JOptionPane.showInputDialog(linkedF,"Enter the second bags name");
+		    String newb = JOptionPane.showInputDialog(linkedF,"Enter the new bags name");
+		    if((LinkedBag.checkIfBagExists(name1) == false) || (LinkedBag.checkIfBagExists(name2) == false)) {
+	    		JOptionPane.showMessageDialog(linkedF,"ERROR: At least 1 bag does not exist");
+	    	}
+		    else {
+		    	LinkedBag.difference(name1,name2,newb);
+		    	bagLinked b = LinkedBag.lBags.get(newb);
+	    		StringBuilder sb = b.list();
+	    		JOptionPane.showMessageDialog(linkedF,sb);
+		    }
+		 }  
+}); //end event difference
 		//panel stuff
 		options.add(b);
 		options.add(l);
@@ -201,7 +244,15 @@ private static String userText = "";
 		JPanel options = new JPanel();
 		JLabel l = new JLabel("This is for the LinkedData Type, options shown below");
 		JButton b = new JButton("Back");
-		
+		JPanel choices = new JPanel();
+		JButton makeNewBag = new JButton("Make a new bag");
+		JButton add = new JButton("Add Element to a bag");
+		JButton remove = new JButton("Remove an Element from a Bag");
+		JButton del = new JButton("Delete a bag");
+		JButton list = new JButton("List the contents of a bag");
+		JButton union = new JButton("Combine 2 bags into a new one");
+		JButton intersect = new JButton("Intersect 2 bags");
+		JButton difference = new JButton("Get the Diffence of 2 bags");
 		
 		//actions
 		b.addActionListener(new ActionListener(){  
@@ -214,45 +265,19 @@ private static String userText = "";
 		//panel stuff
 		options.add(b);
 		options.add(l);
+		choices.add(makeNewBag);
+		choices.add(del);
+		choices.add(add);
+		choices.add(remove);
+		choices.add(list);
+		choices.add(union);
+		choices.add(intersect);
+		choices.add(difference);
 		
 		//frame stuff
 		resizeF.getContentPane().add(BorderLayout.NORTH, options);
 		resizeF.setVisible(true);
 	}
-	
-	//universal error message pop up
-	public static void errorMessages(String message, String gui) {
-		error.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		error.setSize(200,200);
-		JPanel p = new JPanel();
-		JLabel l = new JLabel(message);
-		JButton back = new JButton("OK");
-		
-		if(gui.equals("linked")) {
-			back.addActionListener(new ActionListener(){  
-			    public void actionPerformed(ActionEvent e){  
-			    GUI_L();
-			    error.dispose();
-			 }  
-	}); //end action
-		}
-		else if(gui.equals("resize")) {
-			back.addActionListener(new ActionListener(){  
-			    public void actionPerformed(ActionEvent e){  
-			    GUI_R();
-			    error.dispose();
-			 }  
-	}); //end action
-		}
-		
-		p.add(l);
-		p.add(back);
-		error.getContentPane().add(BorderLayout.CENTER, p);
-		error.setVisible(true);
-	}
-
-	
-	
 	//archive method, console commands
 	public static void Start() {
 		Scanner sc = new Scanner(System.in);
