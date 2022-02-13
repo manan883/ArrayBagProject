@@ -21,6 +21,15 @@ public class bagLinked {
 			}
 		}
 	}
+	public boolean doesItemExist(String s) {
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i] == s) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 	public void removeXElement(int k) {
 		for(int i = 0; i < arr.length; i++) {
 			if(i == k-1) {
@@ -36,14 +45,25 @@ public class bagLinked {
 		}
 		return "";
 	}
-	public void list() {
+	public StringBuilder list() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Contents of bag: " + getName());
+		sb.append(System.lineSeparator());
 		for(int i = 0; i < arr.length; i++) {
-			System.out.println(arr[i]);
+			if(arr[i] == null) {
+				break;
+			}
+			else {
+				sb.append(arr[i]).append(System.lineSeparator());
+			}
+			
 		}
+		return sb;
 	}
 	public String getName() {
 		return bagName;
 	}
+	
 	public boolean doesPosExist(int k) {
 		if((arr.length) < k) {		
 			return false;

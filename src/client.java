@@ -84,15 +84,91 @@ private static String userText = "";
 		//start event makenewbag
 		makeNewBag.addActionListener(new ActionListener(){  
 		    public void actionPerformed(ActionEvent e){ 
-		    	JDialog jd = new JDialog(linkedF,"User Input");
-		    	JLabel addL = new JLabel("Enter the name of the new bag");
 		    	String name = JOptionPane.showInputDialog(linkedF,"Enter the bag name");
-		    	JOptionPane.showMessageDialog(linkedF,name);
+		    	if(LinkedBag.checkIfBagExists(name) == true) {
+		    		JOptionPane.showMessageDialog(linkedF,"ERROR: Bag already exists");
+		    	}
+		    	else {
+		    		LinkedBag.newBag(name);
+			    	JOptionPane.showMessageDialog(linkedF,"The new bag name is: " + name);
+		    	}
 		    	//GUI_UI("Enter the name of the new bag: ", "Done", "linked");
 		    	//System.out.println(userText);
 		    	
 		 }  
 }); //end event makenewbag
+		//start event list bag
+		list.addActionListener(new ActionListener(){  
+		    public void actionPerformed(ActionEvent e){  
+		    	String name = JOptionPane.showInputDialog(linkedF,"Enter the name of the bag you want listed: ");
+		    	if(LinkedBag.checkIfBagExists(name) == false) {
+		    		JOptionPane.showMessageDialog(linkedF,"ERROR: Bag does not exist");
+		    	}
+		    	else if(LinkedBag.checkIfBagIsNull(name) == true) {
+		    		JOptionPane.showMessageDialog(linkedF,"Bag is empty");
+		    	}
+		    	else {
+		    		bagLinked b = LinkedBag.lBags.get(name);
+		    		StringBuilder sb = b.list();
+		    		JOptionPane.showMessageDialog(linkedF,sb);
+		    	}
+		 }  
+}); //end event list
+		//start event add element
+		add.addActionListener(new ActionListener(){  
+		    public void actionPerformed(ActionEvent e){  
+		    String name = JOptionPane.showInputDialog(linkedF,"Enter the bag you want to append to");
+		    if(LinkedBag.checkIfBagExists(name) == false) {
+	    		JOptionPane.showMessageDialog(linkedF,"ERROR: Bag does not exist");
+	    	}
+		    else {
+		    	String element = JOptionPane.showInputDialog(linkedF,"Enter the element you want to add");
+		    	LinkedBag.addElement(name,element);
+		    }
+		 }  
+}); //end event add element
+		//start event deletebag
+		del.addActionListener(new ActionListener(){  
+		    public void actionPerformed(ActionEvent e){  
+		    String name = JOptionPane.showInputDialog(linkedF,"Enter the bag you want to delete");
+		    if(LinkedBag.checkIfBagExists(name) == false) {
+	    		JOptionPane.showMessageDialog(linkedF,"ERROR: Bag does not exist");
+	    	}
+		    else {
+		    	LinkedBag.deleteBag(name);
+		    }
+		 }  
+}); //end event deletebag
+		//start event remove element
+		remove.addActionListener(new ActionListener(){  
+		    public void actionPerformed(ActionEvent e){  
+		    String name = JOptionPane.showInputDialog(linkedF,"Enter the bag name");
+		    if(LinkedBag.checkIfBagExists(name) == false) {
+	    		JOptionPane.showMessageDialog(linkedF,"ERROR: Bag does not exist");
+	    	}
+		    else {
+		    	String element = JOptionPane.showInputDialog(linkedF,"Enter the element you want to remove. This will remove ALL INSTANCES of the element");
+		    	bagLinked b = LinkedBag.lBags.get(name);
+		    	if(b.doesItemExist(element) == false) {
+		    		JOptionPane.showMessageDialog(linkedF,"There is no such element in the bag");
+		    	}
+		    	else {
+		    		b.removeAppearanceOfItem(element);
+		    	}
+		    	
+		    }
+		 }  
+}); //end event remove element
+		//start union
+		union.addActionListener(new ActionListener(){  
+		    public void actionPerformed(ActionEvent e){  
+		    String name1 = JOptionPane.showInputDialog(linkedF,"Enter the first bags name");
+		    String name2 = JOptionPane.showInputDialog(linkedF,"Enter the second bags name");
+		    if((LinkedBag.checkIfBagExists(name1) == false) || (LinkedBag.checkIfBagExists(name2) == false)) {
+	    		JOptionPane.showMessageDialog(linkedF,"ERROR: At least 1 bag does not exist");
+	    	}
+		 }  
+}); //end event union
 		
 		//panel stuff
 		options.add(b);
