@@ -37,9 +37,28 @@ public String getXElement(int x) {
 public String getName() {
 	return bagName;
 }
-public void list() {
+public StringBuilder list() {
+	StringBuilder sb = new StringBuilder();
+	sb.append("Contents of bag: " + getName());
+	sb.append(System.lineSeparator());
 	for(int i = 0; i < arr.size(); i++) {
-		System.out.println(arr.get(i));
+		if(arr.get(i) == null) {
+			break;
+		}
+		else {
+			sb.append(arr.get(i)).append(System.lineSeparator());
+		}
+		
 	}
+	return sb;
+}
+public boolean doesItemExist(String s) {
+	for(int i = 0; i < arr.size(); i++) {
+		if(arr.get(i) == s) {
+			return true;
+		}
+	}
+	
+	return false;
 }
 }//end class

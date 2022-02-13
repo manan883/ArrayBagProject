@@ -131,6 +131,20 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 			return true;
 		}
 	}
+	public static boolean checkIfBagIsNull(String s) {
+		//this is assuming the bag exists
+		//true -- bag is null
+		bag b = bags.get(s);
+		if(b.getXElement(0) == null) {
+			return true;
+			//bag is null
+		}
+		else {
+			return false;
+			//bag is not null
+		}
+		
+	}
 	public static void removePostion(String s, String name) {
 		//error handle the user input here
 		if(s.matches("-?\\d+(\\.\\d+)?") == false) {
