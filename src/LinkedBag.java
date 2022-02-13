@@ -56,7 +56,16 @@ public class LinkedBag {
 			if((userInput.equals("L")) || (userInput.equals("l"))) {
 				System.out.println("type the bag name you want to list: ");
 				String s = sc.nextLine();
-				list(s);
+				if(checkIfBagExists(s) == false) {
+					System.out.println("ERROR: bag does not exist!");
+				}
+				else if(checkIfBagIsNull(s) == true) {
+					System.out.println("Bag is empty!");
+				}
+				else {
+					list(s);
+				}
+			
 			}
 			if((userInput.equals("R")) || (userInput.equals("r"))) {
 				//Ask which bag
@@ -66,6 +75,9 @@ public class LinkedBag {
 				//list the items in the bag
 				if(checkIfBagExists(bagN) == false) {
 					System.out.println("ERROR: bag does not exist!");
+				}
+				else if(checkIfBagIsNull(bagN) == true) {
+					System.out.println("Bag is empty!");
 				}
 				else {
 				list(bagN);			
@@ -96,6 +108,7 @@ public class LinkedBag {
 				String b2 = sc.nextLine();
 				System.out.println("Enter the new bag name: ");
 				String n = sc.nextLine();
+				
 				union(b1,b2,n);
 			}
 			if((userInput.equals("I")) || (userInput.equals("i"))) {
@@ -118,6 +131,7 @@ public class LinkedBag {
 			}
 		}
 	}
+
 	public static boolean checkIfBagExists(String s) {
 		//error handling 
 		if(lBags.get(s) == null) {
@@ -126,6 +140,20 @@ public class LinkedBag {
 		else {
 			return true;
 		}
+	}
+	public static boolean checkIfBagIsNull(String s) {
+		//this is assuming the bag exists
+		//true -- bag is null
+		bagLinked b = lBags.get(s);
+		if(b.getXElement(0) == null) {
+			return true;
+			//bag is null
+		}
+		else {
+			return false;
+			//bag is not null
+		}
+		
 	}
 	public static void removePostion(String s, String name) {
 		//error handle the user input here
