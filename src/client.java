@@ -83,9 +83,13 @@ private static String userText = "";
 }); //end event b
 		//start event makenewbag
 		makeNewBag.addActionListener(new ActionListener(){  
-		    public void actionPerformed(ActionEvent e){  
-		    	GUI_UI("Enter the name of the new bag: ", "Done", "linked");
-		    	System.out.println(userText);
+		    public void actionPerformed(ActionEvent e){ 
+		    	JDialog jd = new JDialog(linkedF,"User Input");
+		    	JLabel addL = new JLabel("Enter the name of the new bag");
+		    	String name = JOptionPane.showInputDialog(linkedF,"Enter the bag name");
+		    	JOptionPane.showMessageDialog(linkedF,name);
+		    	//GUI_UI("Enter the name of the new bag: ", "Done", "linked");
+		    	//System.out.println(userText);
 		    	
 		 }  
 }); //end event makenewbag
@@ -170,84 +174,7 @@ private static String userText = "";
 		error.getContentPane().add(BorderLayout.CENTER, p);
 		error.setVisible(true);
 	}
-	//User input, takes string as input, universal
-	public static void GUI_UI (String label, String button, String gui) {
-		input.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		input.setSize(500,200);
-		JPanel topP = new JPanel();
-		JPanel botP = new JPanel();
-		JLabel l = new JLabel(label);
-		JButton cont = new JButton(button);
-		JButton back = new JButton("back");
-		JTextField tf = new JTextField("",30);
-		//panel stuff
-		topP.add(back);
-		topP.add(l);
-		botP.add(tf);
-		botP.add(cont);
-		
-		//frame stuff
-		input.getContentPane().add(BorderLayout.NORTH, topP);
-		input.getContentPane().add(BorderLayout.SOUTH, botP);
-		input.setVisible(true);
-		
-		//actions
-		if(gui.equals("linked")) {
-			System.out.println("test");
-			back.addActionListener(new ActionListener(){  
-			    public void actionPerformed(ActionEvent e){  
-			    GUI_L();
-			    input.dispose();
-			 }  
-	}); //end action
-			cont.addActionListener(new ActionListener(){  
-			    public void actionPerformed(ActionEvent e){  
-			    if((tf.getText() == null) || (tf.getText().trim().isEmpty())){
-			    errorMessages("Theres nothing in the bag","linked");
-			}
-			    else {
-					 userText = tf.getText();
-					 GUI_L();
-					 input.dispose();
-					 
 
-			    }
-			   
-			 }
-	}); //end action
-				//return userText;
-			
-			
-		}
-		
-		
-		else if(gui.equals("resize")) {
-			back.addActionListener(new ActionListener(){  
-			    public void actionPerformed(ActionEvent e){  
-			    GUI_R();
-			    input.dispose();
-			 }  
-	}); //end action
-			cont.addActionListener(new ActionListener(){  
-			    public void actionPerformed(ActionEvent e){  
-			    	if((tf.getText() == null) || (tf.getText().trim().isEmpty())){
-					    errorMessages("Theres nothing in the bag","linked");
-					}
-			    	else {
-			    		userText = tf.getText();
-			    	    GUI_R();
-					    input.dispose();
-			    	}
-			
-			 }  
-	}); //end action
-			//return userText;
-		}
-		else {
-			//return "";
-		}
-
-	}
 	
 	
 	//archive method, console commands
