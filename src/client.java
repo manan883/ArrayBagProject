@@ -69,7 +69,6 @@ private static JFrame resizeF = new JFrame();
 		 //panel stuff
 		 welcome.setBackground(eggShell);
 		 options.setBackground(eggShell);
-		 
 		 welcome.add(label);
 		 options.add(linked);
 		 options.add(resize);
