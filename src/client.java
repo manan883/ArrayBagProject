@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 public class client {
+private static Color eggShell = new Color(255, 255, 204);
 private static JFrame main = new JFrame();
 private static JFrame linkedF = new JFrame();
 private static JFrame resizeF = new JFrame();
@@ -35,7 +36,7 @@ private static JFrame resizeF = new JFrame();
 	//main GUI
 	public static void GUI() {
 		//make a new color
-		Color color = new Color(51, 204, 255);
+		
 		//set frame
 		 main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 main.setBounds(500,150,500,500);
@@ -48,7 +49,9 @@ private static JFrame resizeF = new JFrame();
 		 JButton linked = new JButton("LinkedData");
 		 JButton resize = new JButton("ResizeableArray");
 		 JPanel options = new JPanel();
-		 
+		 JLabel cart = new JLabel("", new ImageIcon("cart-148964__340.png"),SwingConstants.CENTER);
+		 label.setFont(new Font("Serif", Font.PLAIN, 20));
+		 //label.setForeground(Color.RED);
 		 //add listeners to buttons
 		 linked.addActionListener(new ActionListener(){  
 		    public void actionPerformed(ActionEvent e){  
@@ -64,17 +67,18 @@ private static JFrame resizeF = new JFrame();
 	}); 
 		 
 		 //panel stuff
-		 welcome.setBackground(color);
-		 options.setBackground(color);
+		 welcome.setBackground(eggShell);
+		 options.setBackground(eggShell);
+		 
 		 welcome.add(label);
 		 options.add(linked);
 		 options.add(resize);
-		 
+		 options.add(cart);
 		 
 		 //frame stuff
 		 main.getContentPane().add(BorderLayout.CENTER, options);
 		 main.getContentPane().add(BorderLayout.NORTH, welcome);
-		 main.getContentPane().setBackground(color);
+		 main.getContentPane().setBackground(eggShell);
 		 main.setVisible(true);
 	}
 	
@@ -98,7 +102,7 @@ private static JFrame resizeF = new JFrame();
 		JButton union = new JButton("Combine 2 bags into a new one");
 		JButton intersect = new JButton("Intersect 2 bags");
 		JButton difference = new JButton("Get the Diffence of 2 bags");
-		
+		l.setFont(new Font("Serif", Font.PLAIN, 20));
 		//actions
 		b.addActionListener(new ActionListener(){  
 		    public void actionPerformed(ActionEvent e){  
@@ -241,7 +245,7 @@ private static JFrame resizeF = new JFrame();
 }); //end event difference
 		//panel stuff
 		options.add(b);
-		options.add(l);
+		//options.add(l);
 		choices.add(makeNewBag);
 		choices.add(del);
 		choices.add(add);
@@ -250,7 +254,8 @@ private static JFrame resizeF = new JFrame();
 		choices.add(union);
 		choices.add(intersect);
 		choices.add(difference);
-		
+		options.setBackground(eggShell);
+		choices.setBackground(eggShell);
 		//frame stuff
 		linkedF.getContentPane().add(BorderLayout.NORTH, options);
 		linkedF.getContentPane().add(BorderLayout.CENTER, choices);
@@ -422,7 +427,7 @@ private static JFrame resizeF = new JFrame();
 		
 		//panel stuff
 		options.add(b);
-		options.add(l);
+		//options.add(l);
 		choices.add(makeNewBag);
 		choices.add(del);
 		choices.add(add);
@@ -431,6 +436,8 @@ private static JFrame resizeF = new JFrame();
 		choices.add(union);
 		choices.add(intersect);
 		choices.add(difference);
+		options.setBackground(eggShell);
+		choices.setBackground(eggShell);
 		
 		//frame stuff
 		resizeF.getContentPane().add(BorderLayout.NORTH, options);
