@@ -1,4 +1,3 @@
-//client
 import java.util.*;
 public class BagInterface {
 public static int c = 0;
