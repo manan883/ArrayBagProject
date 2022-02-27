@@ -229,8 +229,9 @@ public final class LinkedBag<T> implements BagInterface<T>
    			result.add(currentNode.getData());
    			currentNode = currentNode.next;
    		}
-   		while (!parameterBag.isEmpty()) {
-   			result.add(parameterBag.remove());
+   		T[] parameterBagCopy = parameterBag.toArray();
+   		for(int i = 0; i < parameterBagCopy.length; i++) {
+   			result.add(parameterBagCopy[i]);
    		}
    		return result;
    		
