@@ -234,15 +234,14 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    
    	public BagInterface<T> union(BagInterface<T> parameterBag) {
    		// Sanitize input
-   		if(parameterBag == null) {
-   			throw new NullPointerException("Parameter bag is null!");
-   		}
+
+   		
    		// Check integrity
    		checkintegrity();
    		
    		// Convert parameterBag into an array and create a result ResizableArrayBag
    		T[] parameterBagCopy = parameterBag.toArray();
-   		ResizableArrayBag<T> result = new ResizableArrayBag<>();
+   		BagInterface<T> result = new ResizableArrayBag<>();
 
    		// Copy the original bag into result, then copy parameterBagArray into result
    		for(int i = 0; i < this.numberOfEntries; i++) {
@@ -255,11 +254,17 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    	} // end union
 
    	public BagInterface<T> intersection(BagInterface<T> parameterBag) {
+   		// Sanitize input
+
+   		
+   		// Check integrity
+   		checkintegrity();
+   		
    		// Convert parameterBag into an array, create an originalBagCopy to prevent tampering 
    		// with the original bag, and create a result ResizableArrayBag
    		T[] parameterBagCopy = parameterBag.toArray();
-   		ResizableArrayBag<T> originalBagCopy = new ResizableArrayBag<>();
-   		ResizableArrayBag<T> result = new ResizableArrayBag<>();
+   		BagInterface<T> originalBagCopy = new ResizableArrayBag<>();
+   		BagInterface<T> result = new ResizableArrayBag<>();
    		
    		// Copy the original bag into originalBagCopy
    		for(int i = 0; i < this.numberOfEntries; i++) {
@@ -278,10 +283,16 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    	} // end intersection
    	
    	public BagInterface<T> difference(BagInterface<T> parameterBag) {
+   		// Sanitize input
+
+   		
+   		// Check integrity
+   		checkintegrity();
+   		
    		// Convert parameterBag into an array, create an originalBagCopy to prevent tampering
    		// with the original bag
    		T[] parameterBagCopy = parameterBag.toArray();
-   		ResizableArrayBag<T> originalBagCopy = new ResizableArrayBag<>();
+   		BagInterface<T> originalBagCopy = new ResizableArrayBag<>();
    		
    		// Copy the original bag into originalBagCopy
    		for(int i = 0; i < this.numberOfEntries; i++) {
@@ -298,6 +309,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    		return originalBagCopy;
    	} // end difference
 } // end ResizableArrayBag
+
 /*
  Testing isEmpty with an empty bag:
  isEmpty finds the bag empty: OK.

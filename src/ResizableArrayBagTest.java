@@ -4,21 +4,15 @@ public class ResizableArrayBagTest {
 	public static void main(String[] args) {
 		System.out.println("----- Resizable Array Bag Test -----");
 		System.out.println("Union Tests:");
-		BagInterface<Integer> bag1 = new ResizableArrayBag<>();
-		BagInterface<Integer> bag2 = new ResizableArrayBag<>();
-		bag1.add(1);
-		bag2.add(2);
-		bag2.add(3);
+		BagInterface<String> bag1 = new ResizableArrayBag<>();
+		BagInterface<String> bag2 = new ResizableArrayBag<>();
+		bag1.add("a");
+		bag2.add("b");
+		bag2.add("d");
 		System.out.println("Bag 1: " + bag1);
 		System.out.println("Bag 2: " + bag2);
-		System.out.println(bag1.union(bag2));
-		
-		BagInterface<Integer> bag7 = new ResizableArrayBag<>();
-		BagInterface<Integer> bag8 = null;
-		bag7.add(5);
-		System.out.println("Bag 7: " + bag7);
-		System.out.println("Bag 8: " + bag8);
-		System.out.println(bag7.union(bag8));
+		BagInterface<String> everything = bag1.union(bag2);
+		System.out.println(everything);
 
 		System.out.println("");
 		System.out.println("Intersection Tests:");

@@ -211,9 +211,29 @@ public final class LinkedBag<T> implements BagInterface<T>
 	
 	// -------------------- Project 1 Additions --------------------
 	
-	public BagInterface<T> union(BagInterface<T> inputBag) 
-	{
-		
+	   public String toString() {
+		   String result = "";
+		   Node currentNode = firstNode;
+		   while (currentNode != null) {
+			   result += currentNode.getData() + " ";
+			   currentNode = currentNode.next;
+		   }
+		   return result;
+	   }
+	   
+	public BagInterface<T> union(BagInterface<T> parameterBag) {
+		BagInterface<T> result = new LinkedBag<>();
+
+   		Node currentNode = firstNode;
+   		while (currentNode != null) {
+   			result.add(currentNode.getData());
+   			currentNode = currentNode.next;
+   		}
+   		while (!parameterBag.isEmpty()) {
+   			result.add(parameterBag.remove());
+   		}
+   		return result;
+   		
 	}
 } // end LinkedBag
 
