@@ -255,6 +255,24 @@ public final class LinkedBag<T> implements BagInterface<T>
    		}
    		return result;
 	}
+	
+	public BagInterface<T> difference(BagInterface<T> parameterBag) {
+   		T[] parameterBagCopy = parameterBag.toArray();
+   		BagInterface<T> originalBagCopy = new LinkedBag<>();
+   		
+		Node currentNode = firstNode;
+		while (currentNode != null) {
+			originalBagCopy.add(currentNode.getData());
+   			currentNode = currentNode.next;
+		}
+		
+   		for(int i = 0; i < parameterBagCopy.length; i++) {
+   			if (originalBagCopy.contains(parameterBagCopy[i])) {
+   				originalBagCopy.remove(parameterBagCopy[i]);
+   			}
+   		} 
+   		return originalBagCopy;
+	}
 } // end LinkedBag
 
 
