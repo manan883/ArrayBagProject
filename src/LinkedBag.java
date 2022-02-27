@@ -210,6 +210,11 @@ public final class LinkedBag<T> implements BagInterface<T>
 	} // end Node
 	
 	// -------------------- Project 1 Additions --------------------
+	
+	public BagInterface<T> union(BagInterface<T> inputBag) 
+	{
+		
+	}
 } // end LinkedBag
 
 

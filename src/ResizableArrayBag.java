@@ -174,7 +174,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
 	} // end getIndexOf
    
    // Removes and returns the entry at a given index within the array.
-   // If no such entry exists, returns null.
+   // If no such entry existos, returns null.
    // Precondition: 0 <= givenIndex < numberOfEntries.
    // Precondition: checkintegrity has been called.
 	private T removeEntry(int givenIndex)
@@ -222,8 +222,82 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
       if (!integrityOK)
          throw new SecurityException ("ArrayBag object is corrupt.");
    } // end checkintegrity
-} // end ResizableArrayBag
+   
+	// -------------------- Project 1 Additions --------------------
+   public String toString() {
+	   String result = "";
+	   for(int i = 0; i < numberOfEntries; i++) {
+		   result += bag[i] + " ";
+	   }
+	   return result;
+   }
+   
+   	public BagInterface<T> union(BagInterface<T> parameterBag) {
+   		// Sanitize input
+   		if(parameterBag == null) {
+   			throw new NullPointerException("Parameter bag is null!");
+   		}
+   		// Check integrity
+   		checkintegrity();
+   		
+   		// Convert parameterBag into an array and create a result ResizableArrayBag
+   		T[] parameterBagCopy = parameterBag.toArray();
+   		ResizableArrayBag<T> result = new ResizableArrayBag<>();
 
+   		// Copy the original bag into result, then copy parameterBagArray into result
+   		for(int i = 0; i < this.numberOfEntries; i++) {
+   			result.add(this.bag[i]);
+   		}
+   		for(int i = 0; i < parameterBagCopy.length; i++) {
+   			result.add(parameterBagCopy[i]);
+   		}
+   		return result;
+   	} // end union
+
+   	public BagInterface<T> intersection(BagInterface<T> parameterBag) {
+   		// Convert parameterBag into an array, create an originalBagCopy to prevent tampering 
+   		// with the original bag, and create a result ResizableArrayBag
+   		T[] parameterBagCopy = parameterBag.toArray();
+   		ResizableArrayBag<T> originalBagCopy = new ResizableArrayBag<>();
+   		ResizableArrayBag<T> result = new ResizableArrayBag<>();
+   		
+   		// Copy the original bag into originalBagCopy
+   		for(int i = 0; i < this.numberOfEntries; i++) {
+   			originalBagCopy.add(this.bag[i]);
+   		}
+   		
+   		// If there is an element in parameterBagCopy that is also in originalBagCopy,
+   		// add the element to result and remove the element in originalBagCopy
+   		for(int i = 0; i < parameterBagCopy.length; i++) {
+   			if (originalBagCopy.contains(parameterBagCopy[i])) {
+   				result.add(parameterBagCopy[i]);
+   				originalBagCopy.remove(parameterBagCopy[i]);
+   			}
+   		}
+   		return result;
+   	} // end intersection
+   	
+   	public BagInterface<T> difference(BagInterface<T> parameterBag) {
+   		// Convert parameterBag into an array, create an originalBagCopy to prevent tampering
+   		// with the original bag
+   		T[] parameterBagCopy = parameterBag.toArray();
+   		ResizableArrayBag<T> originalBagCopy = new ResizableArrayBag<>();
+   		
+   		// Copy the original bag into originalBagCopy
+   		for(int i = 0; i < this.numberOfEntries; i++) {
+   			originalBagCopy.add(this.bag[i]);
+   		}
+   		
+   		// If there is an element in parameterBagCopy that is also in originalBagCopy,
+   		// remove the element in originalBagCopy
+   		for(int i = 0; i < parameterBagCopy.length; i++) {
+   			if (originalBagCopy.contains(parameterBagCopy[i])) {
+   				originalBagCopy.remove(parameterBagCopy[i]);
+   			}
+   		} 
+   		return originalBagCopy;
+   	} // end difference
+} // end ResizableArrayBag
 /*
  Testing isEmpty with an empty bag:
  isEmpty finds the bag empty: OK.
