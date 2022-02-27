@@ -18,6 +18,7 @@ private static JFrame resizeF = new JFrame();
 		//have user choose which type they want then call methods based on that 
 		splashGUI();
 		GUI();
+		//Start();
 	}
 	public static void splashGUI() throws MalformedURLException {
 		JWindow window = new JWindow();

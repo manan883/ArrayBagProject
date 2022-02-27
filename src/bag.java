@@ -54,7 +54,7 @@ public StringBuilder list() {
 }
 public boolean doesItemExist(String s) {
 	for(int i = 0; i < arr.size(); i++) {
-		if(arr.get(i) == s) {
+		if(arr.get(i).equals(s)) {
 			return true;
 		}
 	}

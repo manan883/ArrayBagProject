@@ -2,6 +2,7 @@
 import java.util.*;
 public class ResizeableArrayBag {
 public static ArrayList<String> bagNames;
+public static bag[]  b = new bag[999];
 protected static Map<String, bag> bags = new HashMap<String, bag>();
 	public static void userInterfaceResize() {
 		bagNames = new ArrayList<String>();
