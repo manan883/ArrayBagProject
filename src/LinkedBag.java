@@ -222,6 +222,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 	   }
 	   
 	public BagInterface<T> union(BagInterface<T> parameterBag) {
+   		T[] parameterBagCopy = parameterBag.toArray();
 		BagInterface<T> result = new LinkedBag<>();
 
    		Node currentNode = firstNode;
@@ -229,12 +230,30 @@ public final class LinkedBag<T> implements BagInterface<T>
    			result.add(currentNode.getData());
    			currentNode = currentNode.next;
    		}
-   		T[] parameterBagCopy = parameterBag.toArray();
    		for(int i = 0; i < parameterBagCopy.length; i++) {
    			result.add(parameterBagCopy[i]);
    		}
    		return result;
+	}
+	
+	public BagInterface<T> intersection(BagInterface<T> parameterBag) {
+   		T[] parameterBagCopy = parameterBag.toArray();
+   		BagInterface<T> originalBagCopy = new LinkedBag<>();
+		BagInterface<T> result = new LinkedBag<>();
    		
+		Node currentNode = firstNode;
+		while (currentNode != null) {
+			originalBagCopy.add(currentNode.getData());
+   			currentNode = currentNode.next;
+		}
+		
+   		for(int i = 0; i < parameterBagCopy.length; i++) {
+   			if (originalBagCopy.contains(parameterBagCopy[i])) {
+   				result.add(parameterBagCopy[i]);
+   				originalBagCopy.remove(parameterBagCopy[i]);
+   			}
+   		}
+   		return result;
 	}
 } // end LinkedBag
 
