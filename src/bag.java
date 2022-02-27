@@ -6,7 +6,7 @@ private String bagName;
 	arr = new ArrayList<String>();
 	bagName = name;
 }
- // hi
+
 public void addItem(String s) {
 	arr.add(s);
 }

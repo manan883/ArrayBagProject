@@ -16,8 +16,9 @@ private static JFrame resizeF = new JFrame();
 	public static void main(String[] args) throws MalformedURLException {
 		// TODO Auto-generated method stub
 		//have user choose which type they want then call methods based on that 
-		splashGUI();
-		GUI();
+		//splashGUI();
+		//GUI();
+		Start();
 	}
 	public static void splashGUI() throws MalformedURLException {
 		JWindow window = new JWindow();

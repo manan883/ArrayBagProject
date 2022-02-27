@@ -2,6 +2,7 @@
 import java.util.*;
 public class ResizeableArrayBag {
 public static ArrayList<String> bagNames;
+public static bag[]  b = new bag[999];
 protected static Map<String, bag> bags = new HashMap<String, bag>();
 	public static void userInterfaceResize() {
 		bagNames = new ArrayList<String>();
@@ -24,15 +25,12 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		if((userInput.equals("M")) || (userInput.equals("m"))) {
 			//prompt user to make new bag
 			System.out.println("Enter the bag name you want");
-			String s = sc.nextLine();
-			if(checkIfBagExists(s) == true) {
-				System.out.println("bag already exists ");
-				
+			String s = sc.nextLine();		
+			if(s.equals("")) {
+				System.out.println("Bag name cannot be empty!");
 			}
-			else {
-				
 			newBag(s);
-			}
+			
 		}
 		if((userInput.equals("D")) || (userInput.equals("d"))) {
 			System.out.println("Enter the bag name you want to delete");
@@ -122,9 +120,39 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		
 		}
 	}
+	public static bag get(String s) {
+		for(int i = 0; i < b.length; i++) {
+			bag m = b[i];
+			if(m == null) {
+				return null;
+			}
+			if(m.getName().equals(s)) {
+				return m;
+			}
+			
+		}
+		return null;
+	}
+	public static void put(String s) {
+		for(int i = 0; i < b.length; i++) {
+			if(b[i] == null) {
+				bag m = new bag(s);
+				b[i] = m;
+			}
+		}
+	}
+	public static void remove(String s) {
+		for(int i =0; i < b.length; i++) {
+			bag m = b[i];
+			if(m.getName().equals(s)) {
+				b[i] = null;
+			}
+		}
+	}
+
 	public static boolean checkIfBagExists(String s) {
 		//error handling 
-		if(bags.get(s) == null) {
+		if(get(s) == null) {
 			return false;
 		}
 		else {
@@ -134,7 +162,7 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 	public static boolean checkIfBagIsNull(String s) {
 		//this is assuming the bag exists
 		//true -- bag is null
-		bag b = bags.get(s);
+		bag b = get(s);
 		if(b.getXElement(0) == null) {
 			return true;
 			//bag is null
@@ -155,7 +183,7 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 				System.out.println("ERROR: bag does not exist!");
 			}
 			else {
-				bag b = bags.get(name);
+				bag b = get(name);
 				int g = Integer.parseInt(s);
 				if(b.doesPosExist(g) == false) {
 					System.out.println("The number given is invalid!");
@@ -172,13 +200,20 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 			System.out.println("ERROR: bag does not exist!");
 		}
 		else {
-		bag b = bags.get(s);
+		bag b = get(s);
 		b.list();
 		}
 	}
+	//new bag with the name: loop through arr: if arr[i] == null: append bag
 	public static void newBag(String str) {
-		bags.put(str, new bag(str));
-		System.out.println("Bag created: " + str);
+		if(checkIfBagExists(str) == true) {
+			System.out.println("Bag already exists");
+		}
+		else {
+			put(str);
+			System.out.println("Bag created: " + str);
+		}
+
 	}
 	public static void deleteBag(String str) {
 		//error handle and remove bag
@@ -186,11 +221,11 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 			System.out.println("ERROR: bag does not exist!");
 		}
 		else {
-		bags.remove(str);
+		remove(str);
 		}
 	}
 	public static void addElement(String bagN, String e) {
-		bag b = bags.get(bagN);
+		bag b =get(bagN);
 		b.addItem(e);
 	}
 	
@@ -203,7 +238,7 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 			//make new bag for the combined and call union in BagInterface class
 			newBag(newBag);
 			
-			BagInterface.union(bags.get(bag1),bags.get(bag2),bags.get(newBag));
+			BagInterface.union(get(bag1),get(bag2),get(newBag));
 		}
 	}
 	public static void intersection(String bag1, String bag2, String newBag) {
@@ -212,7 +247,7 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		}
 		else {
 			newBag(newBag);
-			BagInterface.intersection(bags.get(bag1),bags.get(bag2),bags.get(newBag));
+			BagInterface.intersection(get(bag1),get(bag2),get(newBag));
 		}
 	}
 	public static void difference(String bag1, String bag2, String newBag) {
@@ -221,7 +256,7 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		}
 		else {
 			newBag(newBag);
-			BagInterface.difference(bags.get(bag1),bags.get(bag2),bags.get(newBag));
+			BagInterface.difference(get(bag1),get(bag2),get(newBag));
 		}
 	}
 
