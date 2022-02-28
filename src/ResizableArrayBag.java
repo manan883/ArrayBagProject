@@ -236,10 +236,6 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    
    	public BagInterface<T> union(BagInterface<T> parameterBag) {
    		// Sanitize input
-   		if (parameterBag == null) {
-   			System.out.println("parameterBag is null!");
-   			return null;
-   		}
    		
    		// Check integrity
    		checkintegrity();
