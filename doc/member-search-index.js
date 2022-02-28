@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"<Unnamed>","c":"LinkedBagTest","l":"LinkedBagTest()","u":"%3Cinit%3E()"},{"p":"<Unnamed>","c":"LinkedBagTest","l":"main(String[])","u":"main(java.lang.String[])"}];updateSearchResults();
+memberSearchIndex = [{"p":"<Unnamed>","c":"BagDriver","l":"BagDriver()","u":"%3Cinit%3E()"},{"p":"<Unnamed>","c":"BagDriver","l":"main(String[])","u":"main(java.lang.String[])"}];updateSearchResults();
