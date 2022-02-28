@@ -57,10 +57,10 @@ public interface BagInterface<T>
 	/** Find the intersection of the two bags.
 	 * @param parameterBag  The inputed bag.
 	 * @return A bag that contains the intersection of the two bags. */
-   	public BagInterface<T> intersection(BagInterface<T> parameterBag);
+   	public BagInterface<T> intersection(BagInterface<T> parameterBag) throws NullPointerException;
    	
 	/** Find the difference of the two bags.
 	 * @param parameterBag  The inputed bag.
 	 * @return A bag that contains the difference of the two bags. */
-   	public BagInterface<T> difference(BagInterface<T> parameterBag);
+   	public BagInterface<T> difference(BagInterface<T> parameterBag) throws NullPointerException;
 } // end BagInterface

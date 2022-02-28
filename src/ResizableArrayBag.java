@@ -282,9 +282,11 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    		return result;
    	} // end union
    		
-   	public BagInterface<T> intersection(BagInterface<T> parameterBag) {
+   	public BagInterface<T> intersection(BagInterface<T> parameterBag) throws NullPointerException {
    		// Sanitize input
-
+   		if (parameterBag == null) {
+   			throw new NullPointerException("Inputted bag is null!");
+   		}
    		
    		// Check integrity
    		checkintegrity();
@@ -318,9 +320,11 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    		return result;
    	} // end intersection
    	
-   	public BagInterface<T> difference(BagInterface<T> parameterBag) {
+   	public BagInterface<T> difference(BagInterface<T> parameterBag) throws NullPointerException {
    		// Sanitize input
-
+   		if (parameterBag == null) {
+   			throw new NullPointerException("Inputted bag is null!");
+   		}
    		
    		// Check integrity
    		checkintegrity();
