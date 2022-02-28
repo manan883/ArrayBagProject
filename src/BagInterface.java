@@ -48,15 +48,19 @@ public interface BagInterface<T>
 	public T[] toArray();
 	
 	// -------------------- Project 1 Additions --------------------
-	/** Combines two bags into one.
-	 * @param inputBag The inputted bag.
-	 * @return A bag that contains the elements within both of the bags.
-	 */
-	public BagInterface<T> union(BagInterface<T> inputBag);
-
-   	public BagInterface<T> intersection(BagInterface<T> inputBag);
+	
+	/** Combines the two bags.
+	 * @param parameterBag  The inputed bag.
+	 * @return A bag that contains the elements within both of the bags. */
+	public BagInterface<T> union(BagInterface<T> parameterBag);
+	
+	/** Find the intersection of the two bags.
+	 * @param parameterBag  The inputed bag.
+	 * @return A bag that contains the intersection of the two bags. */
+   	public BagInterface<T> intersection(BagInterface<T> parameterBag);
    	
-   	public BagInterface<T> difference(BagInterface<T> inputBag);
-
-
+	/** Find the difference of the two bags.
+	 * @param parameterBag  The inputed bag.
+	 * @return A bag that contains the difference of the two bags. */
+   	public BagInterface<T> difference(BagInterface<T> parameterBag);
 } // end BagInterface

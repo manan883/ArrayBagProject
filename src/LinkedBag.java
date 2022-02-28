@@ -221,74 +221,18 @@ public final class LinkedBag<T> implements BagInterface<T>
 		   }
 		   return result;
 	   } // end toString
-	   
-	public BagInterface<T> union(BagInterface<T> parameterBag) {
-		
-		// Convert parameterBag into an array, then initialize a new LinkedBag object result
-   		T[] parameterBagCopy = parameterBag.toArray();
-		BagInterface<T> result = new LinkedBag<>();
 
-		// Iterate through the first bag and add each element into result, then do the same
-		// for the parameter bag and return result
-   		Node currentNode = firstNode;
-   		while (currentNode != null) {
-   			result.add(currentNode.getData());
-   			currentNode = currentNode.next;
-   		}
-   		for(int i = 0; i < parameterBagCopy.length; i++) {
-   			result.add(parameterBagCopy[i]);
-   		}
-   		return result;
-	} // end union
-	
-	public BagInterface<T> intersection(BagInterface<T> parameterBag) {
-		
-		// Convert parameterBag into an array, initialize an originalBagCopy to prevent
-		// tampering with the original bag, and initialize a result LinkedBag
-   		T[] parameterBagCopy = parameterBag.toArray();
-   		BagInterface<T> originalBagCopy = new LinkedBag<>();
-		BagInterface<T> result = new LinkedBag<>();
-   		
-		// Copy the original bag into a copied version to prevent tampering
-		Node currentNode = firstNode;
-		while (currentNode != null) {
-			originalBagCopy.add(currentNode.getData());
-   			currentNode = currentNode.next;
-		}
-		
-		// If originalBagCopy has an element in parameterBagCopy, add it to result and
-		// remove it from originalBagCopy
-   		for(int i = 0; i < parameterBagCopy.length; i++) {
-   			if (originalBagCopy.contains(parameterBagCopy[i])) {
-   				result.add(parameterBagCopy[i]);
-   				originalBagCopy.remove(parameterBagCopy[i]);
-   			}
-   		}
-   		return result;
-	} // end intersection
-	
-	public BagInterface<T> difference(BagInterface<T> parameterBag) {
-		
-		// Converts parameterBag into an array and initializes originalBagCopy
-   		T[] parameterBagCopy = parameterBag.toArray();
-   		BagInterface<T> originalBagCopy = new LinkedBag<>();
-   		
-   		// Copies the original bag into a copied version to prevent tampering
-		Node currentNode = firstNode;
-		while (currentNode != null) {
-			originalBagCopy.add(currentNode.getData());
-   			currentNode = currentNode.next;
-		}
-		
-		// If originalBagCopy shares an element with parameterBagCopy,
-		// remove it from originalBagCopy
-   		for(int i = 0; i < parameterBagCopy.length; i++) {
-   			if (originalBagCopy.contains(parameterBagCopy[i])) {
-   				originalBagCopy.remove(parameterBagCopy[i]);
-   			}
-   		} 
-   		return originalBagCopy;
-	} // end difference
+	   public BagInterface<T> union(BagInterface<T> parameterBag) {
+		   
+	   } // end union
+
+	   public BagInterface<T> intersection(BagInterface<T> parameterBag) {
+		   
+	   } // end intersection
+	   
+	   public BagInterface<T> difference(BagInterface<T> parameterBag) {
+		   
+	   } // end differnece
 } // end LinkedBag
 
 

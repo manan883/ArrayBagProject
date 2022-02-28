@@ -229,7 +229,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    public String toString() {
 	   String result = "";
 	   for(int i = 0; i < numberOfEntries; i++) {
-		   result += bag[i] + " ";
+		   result += this.bag[i] + " ";
 	   }
 	   return result;
    } // end toString
@@ -263,8 +263,8 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    		   		for(int i = 0; i < this.numberOfEntries; i++) {
    		   			result.add(this.bag[i]);
    		   		}
+   	   			return result;
    			}
-   			return result;
    		}
    		
    		// Copy the original bag into result, then copy parameterBagArray into result
@@ -325,7 +325,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    		BagInterface<T> originalBagCopy = new ResizableArrayBag<>();
    		
    		// - Special Cases -
-   		// If bag or parameterBag is empty
+   		// If bag and parameterBag is empty
    		if(this.isEmpty() && parameterBag.isEmpty()) {
    			return originalBagCopy;
    		}
