@@ -234,8 +234,11 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
 	   return result;
    } // end toString
    
-   	public BagInterface<T> union(BagInterface<T> parameterBag) {
+   	public BagInterface<T> union(BagInterface<T> parameterBag) throws NullPointerException {
    		// Sanitize input
+   		if (parameterBag == null) {
+   			throw new NullPointerException("Inputted bag is null!");
+   		}
    		
    		// Check integrity
    		checkintegrity();

@@ -225,9 +225,6 @@ public final class LinkedBag<T> implements BagInterface<T>
 	   public BagInterface<T> union(BagInterface<T> parameterBag) {
 		    // Sanitize input
 
-	   		
-	   		// Check integrity
-	   		
 		   
 	        // Convert parameterBag into an array, then initialize a new LinkedBag object result
 	        T[] parameterBagCopy = parameterBag.toArray();
@@ -274,9 +271,6 @@ public final class LinkedBag<T> implements BagInterface<T>
 	   public BagInterface<T> intersection(BagInterface<T> parameterBag) {
 		    // Sanitize input
 
-	   		
-	   		// Check integrity
-	   		
 		   
 	        // Convert parameterBag into an array, initialize an originalBagCopy to prevent
 	        // tampering with the original bag, and initialize a result LinkedBag
@@ -311,9 +305,6 @@ public final class LinkedBag<T> implements BagInterface<T>
 	   public BagInterface<T> difference(BagInterface<T> parameterBag) {
 		    // Sanitize input
 
-	   		
-	   		// Check integrity
-	   		
 		   
 	        // Converts parameterBag into an array and initializes originalBagCopy
 	           T[] parameterBagCopy = parameterBag.toArray();

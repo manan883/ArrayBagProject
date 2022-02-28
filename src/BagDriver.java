@@ -61,7 +61,7 @@ public class BagDriver {
 		bag7.add(3);
 		bag7.add(4);
 		System.out.println("L Bag 7: " + bag7);
-		BagInterface<Integer> bag8 = new ResizableArrayBag<>();
+		BagInterface<Integer> bag8 = new LinkedBag<>();
 		System.out.println("L Bag 8: " + bag8);
 		System.out.println("");
 		System.out.println("Next, let us union bags 5+6 and 7+8 together.");

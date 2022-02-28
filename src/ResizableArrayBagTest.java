@@ -53,6 +53,30 @@ public class ResizableArrayBagTest {
 		System.out.println("Result Bag: " + everything4);
 		assertEquals("Result Bag: ", "Result Bag: " + everything4);
 		System.out.println("");
+		
+		System.out.println("Union of a bag9 and a null bag10");
+		BagInterface<String> bag9 = new ResizableArrayBag<>();
+		BagInterface<String> bag10 = null;
+		bag9.add("b");
+		System.out.println("Bag 9: " + bag9);
+		System.out.println("Bag 10: " + bag10);
+		var everything5 = assertThrows(NullPointerException.class, () -> {bag9.union(bag10);});
+		System.out.println("Result Bag: " + everything5);
+		System.out.println("");
+		
+		System.out.println("Union of a bag11 and a bag12 with a null element");
+		BagInterface<String> bag11 = new ResizableArrayBag<>();
+		BagInterface<String> bag12 = new ResizableArrayBag<>();
+		bag11.add("b");
+		bag11.add("g");
+		bag12.add("a");
+		bag12.add(null);
+		System.out.println("Bag 11: " + bag11);
+		System.out.println("Bag 12: " + bag12);
+		BagInterface<String> everything6 = bag11.union(bag12);
+		System.out.println("Result Bag: " + everything6);
+		assertEquals("Result Bag: b g a null ", "Result Bag: " + everything6);
+		System.out.println("");
 	} // end of unionTest
 	
 	@Test

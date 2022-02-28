@@ -52,7 +52,7 @@ public interface BagInterface<T>
 	/** Combines the two bags.
 	 * @param parameterBag  The inputed bag.
 	 * @return A bag that contains the elements within both of the bags. */
-	public BagInterface<T> union(BagInterface<T> parameterBag);
+	public BagInterface<T> union(BagInterface<T> parameterBag) throws NullPointerException;
 
 	/** Find the intersection of the two bags.
 	 * @param parameterBag  The inputed bag.
