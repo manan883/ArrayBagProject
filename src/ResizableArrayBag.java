@@ -236,7 +236,10 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    
    	public BagInterface<T> union(BagInterface<T> parameterBag) {
    		// Sanitize input
-   		
+   		if (parameterBag == null) {
+   			System.out.println("parameterBag is null!");
+   			return null;
+   		}
    		
    		// Check integrity
    		checkintegrity();
@@ -255,7 +258,8 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    		if(this.isEmpty() || parameterBag.isEmpty()) {
    			if(this.isEmpty()) {
    		   		for(int i = 0; i < parameterBagCopy.length; i++) {
-   		   			result.add(parameterBagCopy[i]);
+   		   			T tempElement = parameterBagCopy[i];
+   		   			result.add(tempElement);
    		   		}
    		   		return result;
    			}
@@ -271,8 +275,10 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    		for(int i = 0; i < this.numberOfEntries; i++) {
    			result.add(this.bag[i]);
    		}
+   		
    		for(int i = 0; i < parameterBagCopy.length; i++) {
-   			result.add(parameterBagCopy[i]);
+   			T tempElement = parameterBagCopy[i];
+   			result.add(tempElement);
    		}
    		return result;
    	} // end union
@@ -304,9 +310,10 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    		// If there is an element in parameterBagCopy that is also in originalBagCopy,
    		// add the element to result and remove the element in originalBagCopy
    		for(int i = 0; i < parameterBagCopy.length; i++) {
-   			if (originalBagCopy.contains(parameterBagCopy[i])) {
-   				result.add(parameterBagCopy[i]);
-   				originalBagCopy.remove(parameterBagCopy[i]);
+   			T tempElement = parameterBagCopy[i];
+   			if (originalBagCopy.contains(tempElement)) {
+   				result.add(tempElement);
+   				originalBagCopy.remove(tempElement);
    			}
    		}
    		return result;
@@ -349,8 +356,9 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    		// If there is an element in parameterBagCopy that is also in originalBagCopy,
    		// remove the element in originalBagCopy
    		for(int i = 0; i < parameterBagCopy.length; i++) {
-   			if (originalBagCopy.contains(parameterBagCopy[i])) {
-   				originalBagCopy.remove(parameterBagCopy[i]);
+   			T tempElement = parameterBagCopy[i];
+   			if (originalBagCopy.contains(tempElement)) {
+   				originalBagCopy.remove(tempElement);
    			}
    		} 
    		return originalBagCopy;

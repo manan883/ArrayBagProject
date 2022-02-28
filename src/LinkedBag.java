@@ -10,7 +10,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 {
 	private Node firstNode;       // Reference to first node
 	private int numberOfEntries;
-
+	
 	public LinkedBag()
 	{
 		firstNode = null;
