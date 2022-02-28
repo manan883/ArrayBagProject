@@ -224,13 +224,15 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    } // end checkintegrity
    
 	// -------------------- Project 1 Additions --------------------
+   
+   // Converts output into strings rather than addresses
    public String toString() {
 	   String result = "";
 	   for(int i = 0; i < numberOfEntries; i++) {
 		   result += bag[i] + " ";
 	   }
 	   return result;
-   }
+   } // end toString
    
    	public BagInterface<T> union(BagInterface<T> parameterBag) {
    		// Sanitize input
