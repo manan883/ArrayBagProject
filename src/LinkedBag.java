@@ -223,11 +223,41 @@ public final class LinkedBag<T> implements BagInterface<T>
 	   } // end toString
 
 	   public BagInterface<T> union(BagInterface<T> parameterBag) {
+		    // Sanitize input
 
+	   		
+	   		// Check integrity
+	   		
+		   
 	        // Convert parameterBag into an array, then initialize a new LinkedBag object result
 	        T[] parameterBagCopy = parameterBag.toArray();
 	        BagInterface<T> result = new LinkedBag<>();
-
+	        
+	        // - Special Cases -
+	   		// If bag and parameterBag are empty
+	   		if(this.isEmpty() && parameterBag.isEmpty()) {
+	   			return result;
+	   		}
+	   		
+	   	// If either bag or parameterBag is empty
+	   		if(this.isEmpty() || parameterBag.isEmpty()) {
+	   			if(this.isEmpty()) {
+	   		   		for(int i = 0; i < parameterBagCopy.length; i++) {
+	   		   			T tempElement = parameterBagCopy[i];
+	   		   			result.add(tempElement);
+	   		   		}
+	   		   		return result;
+	   			}
+	   			if(parameterBag.isEmpty()) {
+	   				Node currentNode = firstNode;
+	   		        while (currentNode != null) {
+	   		            result.add(currentNode.getData());
+	   		            currentNode = currentNode.next;
+	   		        }
+	   		   		return result;
+	   			}
+	   		}
+	   		
 	        // Iterate through the first bag and add each element into result, then do the same
 	        // for the parameter bag and return result
 	        Node currentNode = firstNode;
@@ -242,13 +272,23 @@ public final class LinkedBag<T> implements BagInterface<T>
 	    } // end union
 
 	   public BagInterface<T> intersection(BagInterface<T> parameterBag) {
+		    // Sanitize input
 
+	   		
+	   		// Check integrity
+	   		
+		   
 	        // Convert parameterBag into an array, initialize an originalBagCopy to prevent
 	        // tampering with the original bag, and initialize a result LinkedBag
 	        T[] parameterBagCopy = parameterBag.toArray();
 	        BagInterface<T> originalBagCopy = new LinkedBag<>();
 	        BagInterface<T> result = new LinkedBag<>();
-
+	        
+	        // - Special Cases -
+	   		// If bag or parameterBag is empty
+	   		if(this.isEmpty() || parameterBag.isEmpty()) {
+	   			return result;
+	   		}
 	        // Copy the original bag into a copied version to prevent tampering
 	        Node currentNode = firstNode;
 	        while (currentNode != null) {
@@ -258,6 +298,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 
 	        // If originalBagCopy has an element in parameterBagCopy, add it to result and
 	        // remove it from originalBagCopy
+	        
 	           for(int i = 0; i < parameterBagCopy.length; i++) {
 	               if (originalBagCopy.contains(parameterBagCopy[i])) {
 	                   result.add(parameterBagCopy[i]);
@@ -268,11 +309,35 @@ public final class LinkedBag<T> implements BagInterface<T>
 	    } // end intersection
 	   
 	   public BagInterface<T> difference(BagInterface<T> parameterBag) {
+		    // Sanitize input
 
+	   		
+	   		// Check integrity
+	   		
+		   
 	        // Converts parameterBag into an array and initializes originalBagCopy
 	           T[] parameterBagCopy = parameterBag.toArray();
 	           BagInterface<T> originalBagCopy = new LinkedBag<>();
 
+	        // - Special Cases -
+	      		// If bag and parameterBag is empty
+	      		if(this.isEmpty() && parameterBag.isEmpty()) {
+	      			return originalBagCopy;
+	      		}
+	      		// If bag is empty
+	      		if(this.isEmpty()) {
+	      			return originalBagCopy;
+	      		}
+	      		// If parameterBag is empty
+	      		if(parameterBag.isEmpty()) {
+	      			Node currentNode = firstNode;
+	   		        while (currentNode != null) {
+	   		        	originalBagCopy.add(currentNode.getData());
+	   		            currentNode = currentNode.next;
+	   		        }
+	   		   		return originalBagCopy;
+	      		}
+	      		
 	        // Copies the original bag into a copied version to prevent tampering
 	        Node currentNode = firstNode;
 	        while (currentNode != null) {
@@ -289,7 +354,6 @@ public final class LinkedBag<T> implements BagInterface<T>
 	           } 
 	           return originalBagCopy;
 	    } // end difference
-	  
 } // end LinkedBag
 
 

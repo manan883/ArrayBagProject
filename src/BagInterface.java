@@ -53,7 +53,7 @@ public interface BagInterface<T>
 	 * @param parameterBag  The inputed bag.
 	 * @return A bag that contains the elements within both of the bags. */
 	public BagInterface<T> union(BagInterface<T> parameterBag);
-	
+
 	/** Find the intersection of the two bags.
 	 * @param parameterBag  The inputed bag.
 	 * @return A bag that contains the intersection of the two bags. */

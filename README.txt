@@ -14,9 +14,9 @@ Samuel Araya - Big O Notation Excel Sheet for methods in the "master" branch
 Manan Patel - Responsible for everything in the "master" branch
 
 Implementations of Extra Features:
-- Extra implementation of hashmaps
-- Extra implementation of a java GUI
-- Extra implementation of JUnit test framework
+- Extra implementation of hashmaps (master branch)
+- Extra implementation of a java GUI (master branch)
+- Extra implementation of JUnit test framework (Revised_Project_1 branch)
 
 Video Demo Link:
 

@@ -53,8 +53,7 @@ public class ResizableArrayBagTest {
 		System.out.println("Result Bag: " + everything4);
 		assertEquals("Result Bag: ", "Result Bag: " + everything4);
 		System.out.println("");
-		
-	}
+	} // end of unionTest
 	
 	@Test
 	public void intersectionTest() {
@@ -149,7 +148,7 @@ public class ResizableArrayBagTest {
 		System.out.println("Result Bag: " + bag13.intersection(bag14));
 		assertEquals("Result Bag: ", "Result Bag: " + bag13.intersection(bag14));
 		System.out.println("");
-	}
+	} // end of intersectionTest
 	
 	@Test
 	public void differenceTest() {
@@ -247,5 +246,5 @@ public class ResizableArrayBagTest {
 		System.out.println("Result Bag: " + bag13.difference(bag14));
 		assertEquals("Result Bag: ", "Result Bag: " + bag13.difference(bag14));
 		System.out.println("");
-	}
+	} //end of differenceTest
 }
