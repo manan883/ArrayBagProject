@@ -211,7 +211,8 @@ public final class LinkedBag<T> implements BagInterface<T>
 	
 	// -------------------- Project 1 Additions --------------------
 	
-	   // Converts output into strings rather than addresses
+	/** Converts the bag into a string for easy printing.
+	   @return The entire bag as a string. */
 	   public String toString() {
 		   String result = "";
 		   Node currentNode = firstNode;
@@ -222,6 +223,9 @@ public final class LinkedBag<T> implements BagInterface<T>
 		   return result;
 	   } // end toString
 
+	   /** Outputs the union of two bags.
+	    @param parameterBag  The other bag to be added.
+	    @return result bag that contains the union of two bags. */
 	   public BagInterface<T> union(BagInterface<T> parameterBag) throws NullPointerException {
 		    // Sanitize input
 		   if (parameterBag == null) {
@@ -270,6 +274,9 @@ public final class LinkedBag<T> implements BagInterface<T>
 	        return result;
 	    } // end union
 
+	   /** Outputs the intersection between two bags.
+	    @param parameterBag  The other bag to be compared with.
+	    @return result bag that contains the intersection of two bags. */
 	   public BagInterface<T> intersection(BagInterface<T> parameterBag) throws NullPointerException {
 		    // Sanitize input
 		   if (parameterBag == null) {
@@ -306,6 +313,9 @@ public final class LinkedBag<T> implements BagInterface<T>
 	           return result;
 	    } // end intersection
 	   
+	   /** Outputs the difference of two bags.
+	    @param parameterBag  The other bag to be compared with.
+	    @return result bag that contains the difference of two bags. */
 	   public BagInterface<T> difference(BagInterface<T> parameterBag) throws NullPointerException {
 		    // Sanitize input
 		   if (parameterBag == null) {
