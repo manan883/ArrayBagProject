@@ -7,8 +7,6 @@ public class ResizableArrayBagTest {
 		BagInterface<String> bag1 = new ResizableArrayBag<>();
 		BagInterface<String> bag2 = new ResizableArrayBag<>();
 		bag1.add("a");
-		bag2.add("b");
-		bag2.add("d");
 		System.out.println("Bag 1: " + bag1);
 		System.out.println("Bag 2: " + bag2);
 		BagInterface<String> everything = bag1.union(bag2);

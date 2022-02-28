@@ -236,7 +236,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    
    	public BagInterface<T> union(BagInterface<T> parameterBag) {
    		// Sanitize input
-
+   		
    		
    		// Check integrity
    		checkintegrity();
