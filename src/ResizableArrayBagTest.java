@@ -186,7 +186,6 @@ public class ResizableArrayBagTest {
 		System.out.println("Bag 16: " + bag16);
 		System.out.println("Result Bag: " + commonItems);
 		System.out.println("");
-		
 	} // end of intersectionTest
 	
 	@Test

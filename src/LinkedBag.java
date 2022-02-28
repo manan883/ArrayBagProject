@@ -222,9 +222,11 @@ public final class LinkedBag<T> implements BagInterface<T>
 		   return result;
 	   } // end toString
 
-	   public BagInterface<T> union(BagInterface<T> parameterBag) {
+	   public BagInterface<T> union(BagInterface<T> parameterBag) throws NullPointerException {
 		    // Sanitize input
-
+		   if (parameterBag == null) {
+	   			throw new NullPointerException("Inputted bag is null!");
+	   		}
 		   
 	        // Convert parameterBag into an array, then initialize a new LinkedBag object result
 	        T[] parameterBagCopy = parameterBag.toArray();
@@ -268,9 +270,11 @@ public final class LinkedBag<T> implements BagInterface<T>
 	        return result;
 	    } // end union
 
-	   public BagInterface<T> intersection(BagInterface<T> parameterBag) {
+	   public BagInterface<T> intersection(BagInterface<T> parameterBag) throws NullPointerException {
 		    // Sanitize input
-
+		   if (parameterBag == null) {
+	   			throw new NullPointerException("Inputted bag is null!");
+	   		}
 		   
 	        // Convert parameterBag into an array, initialize an originalBagCopy to prevent
 	        // tampering with the original bag, and initialize a result LinkedBag
@@ -302,9 +306,11 @@ public final class LinkedBag<T> implements BagInterface<T>
 	           return result;
 	    } // end intersection
 	   
-	   public BagInterface<T> difference(BagInterface<T> parameterBag) {
+	   public BagInterface<T> difference(BagInterface<T> parameterBag) throws NullPointerException {
 		    // Sanitize input
-
+		   if (parameterBag == null) {
+	   			throw new NullPointerException("Inputted bag is null!");
+	   		}
 		   
 	        // Converts parameterBag into an array and initializes originalBagCopy
 	           T[] parameterBagCopy = parameterBag.toArray();
