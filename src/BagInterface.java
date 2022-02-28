@@ -53,7 +53,8 @@ public interface BagInterface<T>
 	 * @return A bag that contains the elements within both of the bags.
 	 */
 	public BagInterface<T> union(BagInterface<T> inputBag);
-	
+	public BagInterface<T> union2(BagInterface<T> inputBag);
+
    	public BagInterface<T> intersection(BagInterface<T> inputBag);
    	
    	public BagInterface<T> difference(BagInterface<T> inputBag);

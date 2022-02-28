@@ -12,22 +12,19 @@ public class ResizableArrayBagTest {
 		System.out.println("Bag 1: " + bag1);
 		System.out.println("Bag 2: " + bag2);
 		BagInterface<String> everything = bag1.union(bag2);
-		System.out.println(everything);
-
+		System.out.println("Result Bag: " + everything);
+		
 		System.out.println("");
 		System.out.println("Intersection Tests:");
 		BagInterface<Integer> bag3 = new ResizableArrayBag<>();
 		BagInterface<Integer> bag4 = new ResizableArrayBag<>();
-		bag3.add(1);
-		bag3.add(2);
-		bag3.add(2);
 		bag4.add(1);
 		bag4.add(1);
 		bag4.add(2);
 		System.out.println("Bag 3: " + bag3);
 		System.out.println("Bag 4: " + bag4);
-		System.out.println(bag3.intersection(bag4));
-		
+		System.out.println("Result Bag: " + bag3.intersection(bag4));
+
 		System.out.println("");
 		System.out.println("Difference Tests:");
 		BagInterface<Integer> bag5 = new ResizableArrayBag<>();
@@ -42,7 +39,7 @@ public class ResizableArrayBagTest {
 		bag6.add(5);
 		System.out.println("Bag 5: " + bag5);
 		System.out.println("Bag 6: " + bag6);
-		System.out.println(bag5.difference(bag6));
+		System.out.println("Result Bag: " + bag5.difference(bag6));
 	}
 
 }
