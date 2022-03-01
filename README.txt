@@ -1,7 +1,7 @@
 ** We are turning in two versions of the project because the version in the           **
 ** master branch uses hashmaps and has a java GUI while the version in the            **
 ** Revised_Project_1 branch (the current branch) is the more basic and rudimentary    **
-** version of the project that  follows the rubric and other guidelines given to us   **
+** version of the project that follows the rubric and other guidelines given to us    **
 
 [1] Names: 
 Jacob Alonzo, Samuel Araya, Manan Patel

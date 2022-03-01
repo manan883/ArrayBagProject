@@ -78,7 +78,7 @@ public class ResizableArrayBagTest {
 		System.out.println("Bag 12: " + bag12);
 		System.out.println("Result Bag: " + everything6);
 		System.out.println("");
-	} // end of unionTest
+	} // end unionTest
 	
 	@Test
 	public void intersectionTest() {
@@ -186,7 +186,7 @@ public class ResizableArrayBagTest {
 		System.out.println("Bag 16: " + bag16);
 		System.out.println("Result Bag: " + commonItems);
 		System.out.println("");
-	} // end of intersectionTest
+	} // end intersectionTest
 	
 	@Test
 	public void differenceTest() {
@@ -297,5 +297,5 @@ public class ResizableArrayBagTest {
 		System.out.println("Bag 16: " + bag16);
 		System.out.println("Result Bag: " + commonItems);
 		System.out.println("");
-	} //end of differenceTest
-}
+	} //end differenceTest
+} // end ResizableArrayBagTest

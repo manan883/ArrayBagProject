@@ -75,6 +75,6 @@ public class BagDriver {
 		System.out.println("Lastly, let us find the differences between bags 5-6 and 7-8.");
 		System.out.println("L Bag 5-6: " + bag5.difference(bag6));
 		System.out.println("L Bag 7-8: " + bag7.difference(bag8));
-	}
+	} // end main
 
 }

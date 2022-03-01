@@ -186,7 +186,7 @@ System.out.println("");
 		System.out.println("Bag 16: " + bag16);
 		System.out.println("Result Bag: " + commonItems);
 		System.out.println("");
-	} // end of intersectionTest
+	} // end intersectionTest
 	
 	@Test
 	public void differenceTest() {
@@ -297,5 +297,5 @@ System.out.println("");
 		System.out.println("Bag 16: " + bag16);
 		System.out.println("Result Bag: " + commonItems);
 		System.out.println("");
-	} //end of differenceTest
-}
+	} // end differenceTest
+} // end LinkedBagTest
