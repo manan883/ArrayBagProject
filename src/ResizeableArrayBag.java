@@ -25,15 +25,9 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		if((userInput.equals("M")) || (userInput.equals("m"))) {
 			//prompt user to make new bag
 			System.out.println("Enter the bag name you want");
-			String s = sc.nextLine();
-			if(checkIfBagExists(s) == true) {
-				System.out.println("bag already exists ");
-				
-			}
-			else {
-				
+			String s = sc.nextLine();				
 			newBag(s);
-			}
+			
 		}
 		if((userInput.equals("D")) || (userInput.equals("d"))) {
 			System.out.println("Enter the bag name you want to delete");
@@ -123,6 +117,29 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		
 		}
 	}
+	public static bag get(String s) {
+		bag m = new bag(s);
+		for(int i = 0; i < b.length; i++) {
+			 m = b[i];
+			if(m == null) {
+				return null;
+			}
+			else if(m.getName() == s) {
+				return m;
+			}
+			
+		}
+		return m;
+	}
+	public static void put(String s) {
+		for(int i = 0; i < b.length; i++) {
+			if(b[i] == null) {
+				bag m = new bag(s);
+				b[i] = m;
+			}
+		}
+	}
+
 	public static boolean checkIfBagExists(String s) {
 		//error handling 
 		if(bags.get(s) == null) {
@@ -177,9 +194,16 @@ protected static Map<String, bag> bags = new HashMap<String, bag>();
 		b.list();
 		}
 	}
+	//new bag with the name: loop through arr: if arr[i] == null: append bag
 	public static void newBag(String str) {
-		bags.put(str, new bag(str));
-		System.out.println("Bag created: " + str);
+		if(checkIfBagExists(str) == true) {
+			System.out.println("Bag already exists");
+		}
+		else {
+			bags.put(str, new bag(str));
+			System.out.println("Bag created: " + str);
+		}
+
 	}
 	public static void deleteBag(String str) {
 		//error handle and remove bag

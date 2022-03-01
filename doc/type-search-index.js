@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"<Unnamed>","l":"bag"},{"p":"<Unnamed>","l":"BagInterface"},{"p":"<Unnamed>","l":"BagInterfaceLinked"},{"p":"<Unnamed>","l":"bagLinked"},{"p":"<Unnamed>","l":"client"},{"p":"<Unnamed>","l":"LinkedBag"},{"p":"<Unnamed>","l":"LinkedBagTest"},{"p":"<Unnamed>","l":"ResizeableArrayBag"}]

@@ -53,35 +53,32 @@ public static int c = 0;
 		ResizeableArrayBag.list(newBag.getName());
 	}
 	public static void difference(bag bag1, bag bag2, bag newBag) {
-		newBag.arr = new ArrayList<String>();
-		newBag.arr.addAll(bag1.arr);
-		//newBag.arr.removeAll(bag2.arr);
-		for(int i = 0; i < bag2.arr.size(); i++) {
-			c = i;
-			newBag.arr.removeIf(n -> (n == bag2.getXElement(c)));
-		}
+		ArrayList<String> temp = bag1.arr;
+		ArrayList<String> b2 = bag2.arr;
+		Set<String> set = new HashSet<>();
 //		if(bag1.arr.size() > bag2.arr.size()) {
-//			//bag1 is outer loop
-//			for(int i = 0; i < bag1.arr.size(); i++) {
-//				for(int j = 0; j < bag2.arr.size(); j++) {
-//					if((bag1.arr.get(i).equals(bag2.arr.get(j)))) {
-//						
-//					}
-//					else {
-//						ResizeableArrayBag.addElement(newBag.getName(),bag1.getXElement(i));
-//					}
-//				}
-//			}
+			//bag1 is outer loop
+			for(int i = 0; i < bag1.arr.size(); i++) {
+				for(int j = 0; j < bag2.arr.size(); j++) {
+					if(bag1.arr.get(i).equals(bag2.arr.get(j))) {
+						set.add(bag1.arr.get(i));
+						//break;
+					}
+				}
+			}
+			temp.removeAll(set);
+
+
 //		}
 //		else if(bag2.arr.size() > bag1.arr.size()) {
 //			//bag 2 is outer loop
-//			for(int i = 0; i < bag2.arr.size(); i++) {
-//				for(int j = 0; j < bag1.arr.size(); j++) {
-//					if((bag2.arr.get(i).equals(bag1.arr.get(j)))) {
+//			for(int i = 0; i < b2.size(); i++) {
+//				for(int j = 0; j < temp.size(); j++) {
+//					if(b2.get(i).equals(temp.get(j))) {
+//						b2.remove(i);
 //					}
 //					else {
-//						ResizeableArrayBag.addElement(newBag.getName(),bag2.getXElement(i));
-//
+//						temp.add(b2.get(j));
 //					}
 //				}
 //			}
@@ -90,17 +87,9 @@ public static int c = 0;
 //		else {
 //			//equal sizing 
 //			//any one is on the outside
-//			for(int i = 0; i < bag1.arr.size(); i++) {
-//				for(int j = 0; j < bag2.arr.size(); j++) {
-//					if((bag1.arr.get(i).equals(bag2.arr.get(j)))) {
-//					}
-//					else {
-//						ResizeableArrayBag.addElement(newBag.getName(),bag1.getXElement(i));
 //
-//					}
-//				}
-//			}
 //		}
+		newBag.arr = temp;
 		System.out.println("The new bag is listed below: ");
 		ResizeableArrayBag.list(newBag.getName());
 	}

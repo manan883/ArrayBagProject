@@ -21,22 +21,32 @@ class ResizeableArrayBagTest {
 		arr.add("testing");
 		arr.add("item");
 		Random r = new Random();
-		for(int i = 0; i < 3; i++) {
-			
-			int m = r.nextInt(9);
-			ResizeableArrayBag.newBag("bag" + i);
-			for(int j = 0; j < m; j++) {
-				int l = r.nextInt(arr.size()-1);
-				ResizeableArrayBag.addElement(("bag" + i), arr.get(l));
+		ResizeableArrayBag.b[0] = new bag("name");
+		for(int i = 0; i < ResizeableArrayBag.b.length; i++) {
+//			System.out.println(ResizeableArrayBag.b[i]);
+			if(ResizeableArrayBag.b[i] == null) {
+				bag m = new bag("name " + i);
+				ResizeableArrayBag.b[i] = m;
+				System.out.println(ResizeableArrayBag.b[i]);
 			}
-			System.out.println("OG list" + i);
-			ResizeableArrayBag.list("bag" + i);
-			System.out.println();
-			System.out.println("Difference output ");
-			ResizeableArrayBag.difference("bag" + i, "bag0", "newBag" + i);
-			System.out.println();
-
 		}
+		System.out.println(ResizeableArrayBag.b[0]);
+//		for(int i = 0; i < 3; i++) {
+//			
+//			int m = r.nextInt(9);
+//			ResizeableArrayBag.newBag("bag" + i);
+//			for(int j = 0; j < m; j++) {
+//				int l = r.nextInt(arr.size()-1);
+//				ResizeableArrayBag.addElement(("bag" + i), arr.get(l));
+//			}
+//			System.out.println("OG list" + i);
+//			ResizeableArrayBag.list("bag" + i);
+//			System.out.println();
+//			System.out.println("Difference output ");
+//			ResizeableArrayBag.difference("bag" + i, "bag0", "newBag" + i);
+//			System.out.println();
+//
+//		}
 		
 		
 	}
