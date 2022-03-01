@@ -251,7 +251,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    		T[] parameterBagCopy = parameterBag.toArray();
    		BagInterface<T> result = new ResizableArrayBag<>();
    		
-   		// - Special Cases -
+   		// - Special Empty Cases -
    		// If bag and parameterBag are empty
    		if(this.isEmpty() && parameterBag.isEmpty()) {
    			return result;
@@ -273,7 +273,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    	   			return result;
    			}
    		}
-   		
+
    		// Copy the original bag into result, then copy parameterBagArray into result
    		for(int i = 0; i < this.numberOfEntries; i++) {
    			result.add(this.bag[i]);
@@ -304,7 +304,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    		BagInterface<T> originalBagCopy = new ResizableArrayBag<>();
    		BagInterface<T> result = new ResizableArrayBag<>();
    		
-   		// - Special Cases -
+   		// - Special Empty Cases -
    		// If bag or parameterBag is empty
    		if(this.isEmpty() || parameterBag.isEmpty()) {
    			return result;
@@ -345,7 +345,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    		T[] parameterBagCopy = parameterBag.toArray();
    		BagInterface<T> originalBagCopy = new ResizableArrayBag<>();
    		
-   		// - Special Cases -
+   		// - Special Empty Cases -
    		// If bag and parameterBag is empty
    		if(this.isEmpty() && parameterBag.isEmpty()) {
    			return originalBagCopy;

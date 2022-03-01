@@ -236,7 +236,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 	        T[] parameterBagCopy = parameterBag.toArray();
 	        BagInterface<T> result = new LinkedBag<>();
 	        
-	        // - Special Cases -
+	   		// - Special Empty Cases -
 	   		// If bag and parameterBag are empty
 	   		if(this.isEmpty() && parameterBag.isEmpty()) {
 	   			return result;
@@ -289,7 +289,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 	        BagInterface<T> originalBagCopy = new LinkedBag<>();
 	        BagInterface<T> result = new LinkedBag<>();
 	        
-	        // - Special Cases -
+	   		// - Special Empty Cases -
 	   		// If bag or parameterBag is empty
 	   		if(this.isEmpty() || parameterBag.isEmpty()) {
 	   			return result;
@@ -326,7 +326,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 	           T[] parameterBagCopy = parameterBag.toArray();
 	           BagInterface<T> originalBagCopy = new LinkedBag<>();
 
-	        // - Special Cases -
+	      		// - Special Empty Cases -
 	      		// If bag and parameterBag is empty
 	      		if(this.isEmpty() && parameterBag.isEmpty()) {
 	      			return originalBagCopy;
