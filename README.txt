@@ -22,5 +22,5 @@ Manan Patel - Responsible for everything in the "master" branch
 
 
 [5] Javadoc's Start Page:
-CS%202400%20-%20Project%201/doc/allclasses-index.html
+ArrayBagProject-Revised_Project_1/doc/allclasses-index.html
 this is the path to the Javadoc's index start page from the project folder*
